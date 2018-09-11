@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>LEADS Chain</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../app/assets/images/tabicon.png">
+    <link href="../app/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../app/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../app/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../app/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../app/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container">
+                <div class="logo">
+                    <a href="home.html" class="logo">
+                        <img src="../app/assets/images/logo.png" alt="" height="30"> </a>
+                </div>
+                <div class="menu-extras topbar-custom">
+
+                    <ul class="list-inline float-right mb-0">
+                        <li class="list-inline-item dropdown notification-list hidden-xs-down">
+                            <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
+                                <i class="mdi mdi-fullscreen noti-icon"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="dropdown-item btn btn-indigo waves-effect waves-light" id="logoutBtn" role="button">
+                                <i class="dripicons-exit text-"></i> Logout </a>
+                        </li>
+                        <li class="menu-item list-inline-item">
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="navbar-custom">
+            <div class="container">
+                <div id="navigation">
+                    <ul class="navigation-menu">
+                        <li class="has-submenu">
+                            <a href="home.html">
+                                <i class="mdi mdi-view-dashboard"></i>Home</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="subject.html">
+                                <i class="mdi mdi-share-variant"></i>Create Certificate</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="create.html">
+                                <i class="mdi mdi-buffer"></i>Issue Certificate</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Home</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card m-b-20">
+                        <div class="card-block">
+                            <h4 class="mt-0 header-title">List Of Issued Certificate</h4>
+                            <p class="text-muted m-b-30 font-14">
+                                This is the list of all student information to whome Blockchai verified certificate has been given.
+                            </p>
+                            <table id="datatable-buttons" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Student Name</th>
+                                        <th>Email Address</th>
+                                        <th>Subject Name</th>
+                                        <th>Semester</th>
+                                        <th>Issue Date</th>
+                                        <th>Institue Name</th>
+                                        <th>Transaction Hash</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div id="regModalError" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title mt-0" id="">LEADS
+                                                <i class="fa fa-chain"></i> Chain</h5>
+                                            <button id="xErrorButton" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-danger">Session Expired</h2>
+                                            <p class="text-danger">Your log in session has expired! Please login again to access the documents</p>
+                                            <p id="errorText" class="text-danger"></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id="closeErrorButton" type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    ©
+                    <img src="../app/assets/images/logo.png" alt="" height="22">
+                    <span class="text-muted hidden-xs-down pull-right">
+                        Developed By
+                        <i class="mbri-setting text-danger"></i> Digital Innovation
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../app/assets/js/jquery.min.js"></script>
+    <script src="../app/assets/js/tether.min.js"></script>
+    <script src="../app/assets/js/bootstrap.min.js"></script>
+    <script src="../app/assets/js/modernizr.min.js"></script>
+    <script src="../app/assets/js/waves.js"></script>
+    <script src="../app/assets/js/jquery.slimscroll.js"></script>
+    <script src="../app/assets/js/jquery.nicescroll.js"></script>
+    <script src="../app/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../app/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../app/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../app/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="../app/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="../app/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="../app/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="../app/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="../app/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="../app/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="../app/assets/plugins/datatables/buttons.colVis.min.js"></script>
+    <script src="../app/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="../app/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <!--<script src="../app/assets/pages/datatables.init.js"></script>-->
+    <script src="../app/assets/js/templateapp.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (sessionStorage.getItem('accessToken') === null) {
+                window.location.href = "login.html";
+            } else {
+                $.ajax({
+                    url: 'http://115.127.24.181:59311/api/Students',
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        var a = $("#datatable-buttons").DataTable({
+                            lengthChange: !1,
+                            buttons: ["copy", {
+                                extend: 'pdfHtml5',
+                                orientation: 'landscape',
+                                pageSize: 'A3',
+                                title: 'LIST OF ISSUED CERTIFICATE'
+                            }, "colvis"],
+                            data: data,
+                            columns: [{
+                                'data': 'Id'
+                            }, {
+                                'data': 'Name'
+                            }, {
+                                'data': 'Email'
+                            }, {
+                                'data': 'SubjectName'
+                            }, {
+                                'data': 'Semester'
+                            }, {
+                                'data': 'IssueDate'
+                            }, {
+                                'data': 'InstitueName'
+                            }, {
+                                'data': 'TransactionHash'
+                            }]
+                        });
+                        a.buttons().container().appendTo(
+                            "#datatable-buttons_wrapper .col-md-6:eq(0)");
+                    },
+                    error: function(response) {
+                        //console.log(response);
+                        $("#regModalError").modal("show");
+                        if (response.status === 401) {
+                            $("#errorText").text(response.responseJSON.Message);
+                        } else {
+                            $("#errorText").text(response.responseJSON.Message);
+                        }
+                    }
+                });
+                $("#closeErrorButton").click(function() {
+                    window.location.href = "login.html";
+                });
+                $("#xErrorButton").click(function() {
+                    window.location.href = "login.html";
+                });
+                $("#logoutBtn").click(function() {
+                    sessionStorage.removeItem('accessToken');
+                    window.location.href = "login.html";
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>LEADS Chain</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../app/assets/images/tabicon.png">
+    <link href="../app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="./app.js"></script>
+</head>
+
+<body class="fixed-left">
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="accountbg">
+    </div>
+    <div class="wrapper-page">
+
+        <div class="card">
+            <div class="card-block">
+                <h3 class="text-center m-0">
+                    <a href="index.html" class="logo logo-admin">
+                        <img src="../app/assets/images/logo.png" height="30" alt="logo">
+                    </a>
+                </h3>
+                <div class="p-3">
+                    <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
+                    <p class="text-muted text-center">Sign in to continue to LEADS <i class="fa fa-chain"></i> Chain</p>
+                    <form class="form-horizontal m-t-30" id="signinForm">
+                        <p id="result" class="alert alert-danger alert-colored" role="alert"></p>
+                        <div class="form-group">
+                            <label for="signinusername">Username</label>
+                            <input type="text" class="form-control" id="signinusername" name="username" placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="signinuserpassword">Password</label>
+                            <input type="password" class="form-control" id="signinuserpassword" name="password" placeholder="Enter password">
+                        </div>
+                        <div class="form-group row m-t-20">
+                            <div class="col-sm-6">
+                                <!--<label class="custom-control mt-2 custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                                    <input type="checkbox" class="custom-control-input" checked>
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Remember me</span>
+                                </label>-->
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit" id="signinButton">Log In</button>
+                            </div>
+                        </div>
+                        <div class="form-group m-t-10 mb-0 row">
+                            <div class="col-12 m-t-20">
+                                <a href="recoverpw.html" class="text-muted">
+                                    <i class="mdi mdi-lock "></i> Forgot your password?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="m-t-40 text-center">
+            <p class="text-white">
+                Don't have an account ?
+                <a href="register.html" class="font-500 font-14 text-white font-secondary"> Signup Now </a>
+            </p>
+            <p class="text-white">
+                © <img src="../app/assets/images/logo.png" alt="" height="22"> <br /> Developed By <i class="mbri-setting text-danger"></i> Digital Innovation
+            </p>
+        </div>
+    </div>
+    <script src="../app/assets/js/jquery.min.js"></script>
+    <script src="../app/assets/js/tether.min.js"></script>
+    <script src="../app/assets/js/bootstrap.min.js"></script>
+    <script src="../app/assets/js/modernizr.min.js"></script>
+    <script src="../app/assets/js/jquery.slimscroll.js"></script>
+    <script src="../app/assets/js/waves.js"></script>
+    <script src="../app/assets/js/jquery.nicescroll.js"></script>
+    <script src="../app/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../app/assets/js/jquery.validate.min.js"></script>
+    <script src="../app/assets/js/templateapp.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#result").hide();
+            $("#signinForm").validate({
+                rules: {
+                    username: "required",
+                    password: "required"
+                },
+                messages: {
+                    username: "Please enter a user name",
+                    password: "Please provide a password"
+                }
+            });
+            //var userName = $("#userusername").val();
+            //var password = $("#userpassword").val();
+            //var loginData = "userName="+userName+"&password="+password+"&grant_type=password";
+
+            $("#signinButton").click(function(e) {
+                var preventDefaults = e.preventDefault();
+                var form = $("#signinForm");
+                if (!form.valid()) return false;
+                $.ajax({
+                    url: 'http://115.127.24.181:59311/Token',
+                    method: 'POST',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: {
+                        userName: $("#signinusername").val(),
+                        password: $("#signinuserpassword").val(),
+                        grant_type: 'password'
+                    },
+                    success: function(response) {
+                        sessionStorage.setItem('accessToken', response.access_token);
+                        window.location.href = "home.html";
+                    },
+                    error: function(response) {
+                        console.log(response);
+                        $("#result").text(response.responseJSON.error_description);
+                        $("#result").show();
+                    }
+                });
+            });;
+        });
+    </script>
+</body>
+
+</html>

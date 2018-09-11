@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>LEADS Chain</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../app/assets/images/tabicon.png">
+    <link href="../app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="./app.js"></script>
+</head>
+
+<body class="fixed-left">
+    <div id="preloader">
+
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <div class="accountbg"></div>
+    <div class="wrapper-page">
+        <div class="card">
+            <div class="card-block">
+                <h3 class="text-center m-0">
+                    <a href="index.html" class="logo logo-admin">
+                        <img src="../app/assets/images/logo.png" height="30" alt="logo">
+                    </a>
+                </h3>
+                <div class="p-3">
+                    <h4 class="text-muted font-18 m-b-5 text-center">Free Register</h4>
+                    <p class="text-muted text-center">Get your free LEADS <i class="fa fa-chain"></i> Chain account now.</p>
+                    <form class="form-horizontal m-t-30" id="regFormValidate">
+                        <div class="form-group">
+                            <label for="useremail">Email</label>
+                            <input type="email" class="form-control" id="useremail" name="email" placeholder="Enter email" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="userusername">User Name</label>
+                            <input type="text" class="form-control" id="userusername" name="username" placeholder="Enter user name" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="userpassword">Password</label>
+                            <input type="password" class="form-control" id="userpassword" name="password" placeholder="Enter password" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmuserpassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmuserpassword" name="confirmpassword" placeholder="Confirm password" required="true">
+                        </div>
+                        <div class="form-group row m-t-20">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit" id="regButton">Register</button>
+                            </div>
+                        </div>
+                        <div class="form-group m-t-10 mb-0 row">
+                            <div class="col-12 m-t-20">
+                                <p class="font-14 text-muted mb-0">
+                                    By registering you agree to the LEADS <i class="fa fa-chain"></i> Chain <a href="#">Terms of Use</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="regModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0" id="regModalLabel">LEADS <i class="fa fa-chain"></i> Chain</h5>
+                                        <button id="xButton" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2>Registration Successfull</h2>
+                                        <p>A verification link has been send to your email address. please verify that link to log in</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="closeButton" type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="regModalError" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0" id="">LEADS <i class="fa fa-chain"></i> Chain</h5>
+                                        <button id="xErrorButton" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h2 class="text-danger">Something Went Wrong</h2>
+                                        <p id="errorText" class="text-danger"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="closeErrorButton" type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="m-t-40 text-center">
+            <p class="text-white">
+                Already have an account ? <a href="login.html" class="font-500 font-14 text-white font-secondary"> Login </a>
+            </p>
+            <p class="text-white">
+                ©
+                <a href="#"><img src="../app/assets/images/logo.png" alt="" height="22"></a> <br /> Developed By <i class="mbri-setting text-danger"></i> Digital Innovation
+            </p>
+        </div>
+    </div>
+    <script src="../app/assets/js/jquery.min.js"></script>
+    <script src="../app/assets/js/jquery.validate.min.js"></script>
+    <script src="../app/assets/js/tether.min.js"></script>
+    <script src="../app/assets/js/bootstrap.min.js"></script>
+    <script src="../app/assets/js/modernizr.min.js"></script>
+    <script src="../app/assets/js/jquery.slimscroll.js"></script>
+    <script src="../app/assets/js/waves.js"></script>
+    <script src="../app/assets/js/jquery.nicescroll.js"></script>
+    <script src="../app/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../app/assets/js/templateapp.js"></script>
+    <!--<script src="../app/assets/js/registrationValidation.js"></script>-->
+    <!-- On Page Scripts -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#regFormValidate").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    username: "required",
+                    password: "required",
+                    confirmpassword: {
+                        required: true,
+                        equalTo: "#userpassword"
+                    }
+                },
+                messages: {
+                    email: "Please enter your email",
+                    username: "Please enter a user name",
+                    password: "Please provide a password",
+                    confirmpassword: {
+                        required: "Please provide a password",
+                        equalTo: "Please enter the same password as above"
+                    }
+                }
+            });
+
+            function displayModelStateErrors(modelState) {
+                var message = "";
+                var propStrings = Object.keys(modelState);
+
+                $.each(propStrings, function(i, propString) {
+                    var propErrors = modelState[propString];
+                    $.each(propErrors, function(j, propError) {
+                        message += propError;
+                    });
+                    message += "\n";
+                });
+
+                $("#errorText").text(message);
+            }
+
+            $("#regButton").click(function(e) {
+                var preventDefaults = e.preventDefault();
+                var form = $("#regFormValidate");
+                if (!form.valid()) return false;
+                $.ajax({
+                    url: 'http://115.127.24.181:59311/api/account/register',
+                    method: 'POST',
+                    data: {
+                        email: $("#useremail").val(),
+                        userName: $("#userusername").val(),
+                        password: $("#userpassword").val(),
+                        confirmPassword: $("#confirmuserpassword").val()
+                    },
+                    success: function() {
+                        $("#regModal").modal("show");
+                        $("#closeButton").click(function() {
+                            window.location.href = "login.html";
+                        });
+                        $("#xButton").click(function() {
+                            window.location.href = "login.html";
+                        });
+                    },
+                    error: function(response) {
+                        $("#regModalError").modal("show");
+                        if (response.status === 400) {
+                            displayModelStateErrors(response.responseJSON.ModelState);
+                        }
+                        $("#closeErrorButton").click(function() {
+                            location.reload();
+                        });
+                        $("#xErrorButton").click(function() {
+                            location.reload();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
